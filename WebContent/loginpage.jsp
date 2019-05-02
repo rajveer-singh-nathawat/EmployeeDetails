@@ -8,35 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="MyCss.css">
-
+<jsp:include page="link.jsp"></jsp:include>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="Home">Employee Detail</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
-			<li class="active"><a href="Profile">Profile</a></li>
+<jsp:include page="navBar.jsp" />
 
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="signuppage.jsp"><span
-					class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-			<!-- <li><a href="loginpage.jsp"><span
-					class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-
-		</ul>
-	</div>
-	</nav>
+	
 
 	<div class="Container">
 		<div class="row">
@@ -45,25 +22,20 @@
 				<h3>Welcome</h3>
 				<form action="LoginServlet" method="post">
 					<div class="form-group">
-						<label for="username">Username:</label> <input type="text"
-							class="form-control" id="username">
+						<label for="username">User Name:</label> <input type="text"
+							class="form-control" name="username">
 					</div>
 					<div class="form-group">
 						<label for="pwd">Password:</label> <input type="password"
-							class="form-control" id="pwd">
+							class="form-control" name="pwd">
 					</div>
 					
-					<button type="submit" class="btn btn-info">Submit</button>
+					<button type="submit" class="btn btn-success">Submit</button>
 				</form>
-
-
-
 			</div>
 		</div>
 
 	</div>
-	<footer class="container-fluid text-center">
-	<p>All Rights Reserved Raj@ 2019</p>
-	</footer>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

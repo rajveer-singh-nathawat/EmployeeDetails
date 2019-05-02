@@ -9,15 +9,20 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/Home")
-public class HomeServlet extends HttpServlet {
-	private static final long serialVersionUID = 4L;
+@WebServlet("/logoutServlet")
+public class LogoutServlet extends HttpServlet {
+	private static final long serialVersionUID = 5L;
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out=response.getWriter();
-		
+	PrintWriter out= response.getWriter();
+	 HttpSession session = request.getSession();
+	 session.removeAttribute("uname");
+	 session.invalidate();
+    out.print("<br/>you are successfully logged out!"); 
+    response.sendRedirect("loginpage.jsp");
 	}
 
 }

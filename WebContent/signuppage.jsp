@@ -38,7 +38,7 @@
 							placeholder="Repeat Password" name="psw_repeat" required>
 					</div>
 
-					<button type="button" class="btn btn-cancel">Cancel</button>
+					<button type="reset" class="btn btn-cancel">Cancel</button>
 					<button type="submit" class="btn btn-success">Sign Up</button>
 
 				</form>

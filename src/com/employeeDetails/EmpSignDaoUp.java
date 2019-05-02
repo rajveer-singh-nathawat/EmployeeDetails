@@ -11,7 +11,8 @@ public class EmpSignDaoUp {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmployeeDb", "root", "root");
+			con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/EmployeeDb", "root", "root");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -22,7 +23,8 @@ public class EmpSignDaoUp {
 		Connection con = EmpSignDaoUp.getConnection();
 		int status = 0;
 		try {
-			PreparedStatement ps = con.prepareStatement("INSERT INTO Employee (USERNAME, PASSWORD) VALUES (?, ?)");
+			PreparedStatement ps = con
+					.prepareStatement("INSERT INTO Employee_signup(`USER_NAME`, `PASSWORD`) VALUES (?, ?)");
 			ps.setString(1, emp.getUsername());
 			ps.setString(2, emp.getPassword());
 			status = ps.executeUpdate();
@@ -31,18 +33,16 @@ public class EmpSignDaoUp {
 		}
 		return status;
 	}
-	
-	public static Boolean getPassword(String uname, String pass) {
-		EmpSignUp emp=new EmpSignUp();
-		Boolean status=false;
-		Connection con = EmpSignDaoUp.getConnection();
-		String sql="select * from Employee where uname=?,pass=?";
+
+	public static Boolean validate(String uname, String pass) {
+		Boolean status = false;
+		Connection con = getConnection();
 		try {
-			PreparedStatement ps=con.prepareStatement(sql);
-			ps.setString(1,emp.getUsername());
-			ps.setString(2,emp.getPassword());
-			ResultSet rs =ps.executeQuery();
-			status=rs.next();
+			PreparedStatement ps = con
+					.prepareStatement("SELECT * FROM Employee_signup WHERE USER_NAME='"
+							+ uname + "' AND PASSWORD='" + pass + "'");
+			ResultSet rs = ps.executeQuery();
+			status = rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
